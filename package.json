@@ -1,6 +1,6 @@
 {
   "name": "flow-nans",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Through stream which removes all non-numeric values from a stream.",
   "author": {
     "name": "Athan Reines",
