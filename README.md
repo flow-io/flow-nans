@@ -14,11 +14,10 @@ $ npm install flow-nans
 ## Examples
 
 ``` javascript
-var // Flow NaN filter stream generator:
+var eventStream = require( 'event-stream' ),
 	fStream = require( 'flow-nans' );
 
-var data = new Array( 9 ),
-	stream;
+var data = new Array( 9 );
 
 // Create some data...
 data[ 0 ] = 'a';
@@ -31,23 +30,20 @@ data[ 6 ] = NaN;
 data[ 7 ] = null;
 data[ 8 ] = 0;
 
-// Create a new stream:
-stream = fStream()
+// Create a readable stream:
+var readStream = eventStream.readArray( data );
+
+// Create a new NaN filter stream:
+var stream = fStream()
 	.accessors( 'd', function ( d ) {
 		return d;
 	})
 	.stream();
 
-// Add a listener:
-stream.on( 'data', function( data ) {
-	console.log( data );
-});
-
-// Write the data to the stream...
-for ( var j = 0; j < data.length; j++ ) {
-	stream.write( data[ j ] );
-}
-stream.end();
+// Create the pipeline:
+readStream.pipe( stream )
+	.pipe( eventStream.stringify() )
+	.pipe( process.stdout );
 ```
 
 ## Tests
