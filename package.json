@@ -18,7 +18,7 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/kgryte/flow-nans.git"
+    "url": "git://github.com/flow-io/flow-nans.git"
   },
   "keywords": [
     "stream",
@@ -32,7 +32,7 @@
     "nan"
   ],
   "bugs": {
-    "url": "https://github.com/kgryte/flow-nans/issues"
+    "url": "https://github.com/flow-io/flow-nans/issues"
   },
   "dependencies": {
     "through": "~2.3.4"
